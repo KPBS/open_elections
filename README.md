@@ -42,6 +42,7 @@ How to Use
 
 
 1. File Fetching
+----------------
 
 If you want to use this inside of a Django application, below are the things you will need to do:
 
@@ -119,6 +120,7 @@ You can also retrieve custom data from another server, but you will have to save
 
 
 2. File Parsing
+----------------
 
 The file-parsing module is where the majority of work has been done. It takes the AP or state or county xml files and parses them for content. Assuming you have a known path for your saved file, you can call file parsers in the following way:
 
@@ -146,6 +148,7 @@ In addition, the Secretary of State has a number of files they offer and we are 
 
 
 3. Using the custom manager commands 
+----------------
 (An alternative to content_fetcher and content_parser)
 
 Finally, you may also use the enclosed management commands to retrieve and parse files once the credentials have been added to the database and the content_fetcher.py file has been edited to include the relevant information:
