@@ -7,7 +7,7 @@ Note: This is a sample XML file for testing with the open_elections program.
 (see: https://github.com/KPBS/open_elections)
 
 This file is from a special municipal election in San Diego county and it may
-look nothing like the files that come out of your San Diego County Registrar's office.
+look nothing like the files that come out of your county registrar's office.
 
 Take note of this and consider not using the following module especially if your county's
 xml looks nothing like what follows:
