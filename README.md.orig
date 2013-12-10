@@ -1,6 +1,7 @@
 open_elections
 ==============
 
+<<<<<<< HEAD
 An application deployed via Python/Django to grab and parse California election results available to news organizations and others.
 
 
@@ -11,13 +12,11 @@ This application was developed at KBPS Public Broadcasting in San Diego, Califor
 
 Even though this application is available for use by anyone, in order to retrieve election results, you will need to get credentials set-up with one or all of the following orgnizations: 
 
-	*California Secretary of State
+*California Secretary of State
+*Associated Press
+*Your local county's registrar of voters
 
-	*Associated Press
-
-	*Your local county's registrar of voters
-
-See each organization for more information on accessing election results through them. *Neither this application nor the authors nor maintainers of this application can help you secure credentials to retrieve election results.*
+See each organization for more information on accessing election results through them. **Neither this application nor the authors nor maintainers of this application can help you secure credentials to retrieve election results.**
 
 
 Structure
@@ -25,24 +24,27 @@ Structure
 
 This application has three main constructs:
 
-     content_fetcher.py (see below)
-     content_parser.py (see below)
-     Associated Django app architecture (templates, views, urls, etc.)
+     *content_fetcher.py (see below)
+     *content_parser.py (see below)
+     *Associated Django app architecture (templates, views, urls, etc.)
 
 
-*content_fetcher.py*: This module is used to fetch content via https from the CA Secretary of State, or via ftp from the Associated Press or the county registrar. 
+     #### +content_fetcher.py
+
+     This module is used to fetch content via https from the CA Secretary of State, or via ftp from the Associated Press or the county registrar. 
 
 
-*content_parser.py*: This module takes retrieved xml content from the above listed sources and parses that content and inserts it into your Django database.
+     #### +content_parser.py
+
+     This module takes retrieved xml content from the above listed sources and parses that content and inserts it into your Django database.
 
 
 How to Use
 ===============
 
 
-
 1. File Fetching
-----------------
+--------------
 
 If you want to use this inside of a Django application, below are the things you will need to do:
 
@@ -120,7 +122,7 @@ You can also retrieve custom data from another server, but you will have to save
 
 
 2. File Parsing
-----------------
+--------------
 
 The file-parsing module is where the majority of work has been done. It takes the AP or state or county xml files and parses them for content. Assuming you have a known path for your saved file, you can call file parsers in the following way:
 
@@ -147,9 +149,8 @@ In addition, the Secretary of State has a number of files they offer and we are 
 *Another Note:* Sample data has been provided so you can compare your xml files to the xml files this application was built to interpret.
 
 
-3. Using the custom manager commands 
-----------------
-(An alternative to content_fetcher and content_parser)
+3. Using the custom manager commands (as an alternative to content_fetcher and content_parser)
+----------------------------
 
 Finally, you may also use the enclosed management commands to retrieve and parse files once the credentials have been added to the database and the content_fetcher.py file has been edited to include the relevant information:
 
@@ -166,6 +167,7 @@ The rest of this application is provided for convenience in order to help you ge
 Other Notes
 ===============
 
-
-You may also find it useful to install and use the python-elections application, which is designed for getting data from the AP elections feed. [See the Python-elections github repo](https://github.com/datadesk/python-elections). Lastly, the [application django-endless-pagination](https://github.com/frankban/django-endless-pagination), may also be useful for setting up your views/templates in order to feed the content. 
-
+You may also find it useful to install and use the python-elections application, which is designed for getting data from the AP elections feed. [Python-elections github repo](https://github.com/datadesk/python-elections). Lastly, the [application django-endless-pagination](https://github.com/frankban/django-endless-pagination), may also be useful for setting up your views/templates in order to feed the content. 
+=======
+Application deployed via Django to grab and parse election results available to news organizations.
+>>>>>>> e8883ab542dd453e3e5d7d84264ca0ef0fa1f9e7
