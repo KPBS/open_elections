@@ -1,0 +1,12 @@
+{% load endless humanize %}
+{% paginate peters_contribs using "peters_contributors" %}
+{% for contrib in peters_contribs %}
+	<li>
+	    <span class="col1">{% if contrib.tran_namf %}{{ contrib.tran_namf }}{% else %}N.A.{% endif %}</span>
+	    <span class="col2">{% if contrib.tran_naml %}{{ contrib.tran_naml }}{% else %}N.A.{% endif %}</span>
+	    <span class="col3">{% if contrib.tran_emp %}{{ contrib.tran_emp }}{% else %}N.A.{% endif %}</span>
+	    <span class="col4">{{ contrib.amount|intcomma }}</span>
+	    <span class="col5">{{ contrib.tran_zip }}</span>
+    </li>
+{% endfor %}
+{% show_more %}

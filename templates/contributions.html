@@ -1,0 +1,17 @@
+{% load humanize %}
+<table>
+    {% for contrib in contributions %}
+        <tr>
+            {% ifchanged contrib.candidate.id %}
+                <td colspan=3">
+                    <h2>{{ contrib.candidate.first_name }} {{ contrib.candidate.last_name }}</h2>
+                </td>
+            {% endifchanged %}
+        </tr>
+        <tr>
+            <td>{{ contrib.tran_id }}</td>
+            <td>{{ contrib.tran_namf }} {{ contrib.tran_naml }}</td>
+            <td>${{ contrib.tran_amt1|intcomma }}</td>
+        </tr>
+    {% endfor %}
+</table>

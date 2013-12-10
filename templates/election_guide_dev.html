@@ -1,0 +1,682 @@
+{% load kpbs_election_tags %}
+<html>
+    <head>
+        <title>KPBS.org June 6th, Califonia Primary Election</title>
+
+        {% comment %}Styles should always come before javascript so that any changes the javascript may make won't be overwritten{% endcomment %}
+        {% block extended_styles %} 
+            <style type="text/css"> 
+                body {
+                    font-family:arial;
+                    margin-left:auto;
+                    margin-right:auto;
+                    width: 555px;
+                }
+                div.panel, p.props, p.local, p.cand-pres, p.cand-congress,
+                p.contest-type {
+                    background:#eee;
+                    border:1px solid #ccc;
+                    cursor:pointer;
+                    font-weight:bold;
+                    margin:10px 0;
+                    padding:5px;
+                    text-align:center;
+                }
+                /*
+                 div.panel-props-state, div.panel-props-local, div.panel-cand-pres,
+                div.panel-local, div.panel-cand-sdmayor, div.panel-cand-congress,
+                div.panel-prop28, div.panel-prop29, div.panel-demaio,
+                div.panel-dumanis,*/
+                div.contest-type-wrapper, .contest-district-panel, .contest {
+                    display:none;
+                }
+                div.panel-prop28, div.panel-prop29 {
+                    border-bottom:1px dotted #ccc;
+                    margin-bottom:10px;
+                }
+                p.props-state, p.props-local, p.cand-sdmayor,
+                p.contest-district, .contest-name {
+                    color:#015190;
+                    cursor:pointer;
+                    font-weight:bold;
+                }
+                p.candidate {
+                    /*color:#015190;*/
+                    font-weight:bold;
+                }
+                div.panel-candidate {
+                    border-bottom:1px dotted #ccc;
+                    margin-bottom:10px;
+                    margin-left:15px;
+                }
+                div.panel-contest {
+                    display:none;
+                }
+                p, ul, ol, dl, td, th, blockquote {
+                    color: #555;
+                    font-family: arial;
+                    font-size: 13px;
+                    line-height: 18px;
+                }
+            </style>
+        {% endblock %}
+
+
+        {% block extended_scripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+              $(document).ready(function() {
+
+                $(".contest-type").click(function(){
+                  text = $(this).text();
+                  if(text == 'Congressional Races' || text == 'State Senate Races' || text == 'State Assembly Races' || text == 'Presidential Race') {
+                    console.log('other clicked');
+                    //$(this).next("div").slideToggle();
+                    $(this).next('.contest-type-wrapper').slideToggle();
+                    $(this).next('.contest-type-wrapper').children('.contest-district-panel').slideToggle();
+                    $(this).next('.contest-type-wrapper').children('.contest-district-panel').children('ul').children('.contest').slideToggle();
+                  } else { 
+                    $(this).next("div").slideToggle();
+                  }
+                });
+
+                $(".contest-district").click(function(e){
+                  $(this).next('.contest-district-panel').slideToggle();
+                  $(this).next('div').children().children().slideToggle();
+                  });
+
+
+                $(".contest-name").click(function(){
+                    $(this).next("div").toggle();
+                });
+              });
+            </script>
+        {% endblock %}
+    </head>
+    <body>
+
+<div class="voter-guide">
+    <p class="contest-type">Propositions</p>
+    <div class="contest-type-wrapper">
+        <p class="contest-district">California</p>
+        <div class="contest-district-panel">
+            {% get_contest 'Proposition' 'california' as state_props %}
+            <ul>
+                {% for prop in state_props %}
+                    {% ifchanged prop.contest %}
+                        {% if not forloop.first %}
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li class="contest">
+                        <p class="contest-name">{{ prop.contest }}</p>
+                        <div class="contest-name-panel">
+                            <p style="font-style: italic;">{% ifchanged prop.contest.short_description %}{{ prop.contest.short_description }}{% endifchanged %}</p>
+                    {% endifchanged %}
+                            <p>{{ prop.short_description }}</p>
+                {% endfor %}
+            </ul>
+        </div>
+        <p class="contest-district">San Diego County</p>
+        <div class="contest-district-panel">
+            {% get_contest 'Proposition' 'county of san diego' as sd_props %}
+            <ul>
+                {% for prop in sd_props %}
+                    {% ifchanged prop.contest %}
+                        {% if not forloop.first %}
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li class="contest">
+                        <p class="contest-name">{{ prop.contest }}</p>
+                        <div class="contest-name-panel">
+                            <p style="font-style: italic;">{% ifchanged prop.contest.short_description %}{{ prop.contest.short_description }}{% endifchanged %}</p>
+                    {% endifchanged %}
+                            <p>{{ prop.short_description|safe|linebreaks }}</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+  <p class="contest-type">Local Races</p>
+    <div class="contest-type-wrapper">
+        <p class="contest-district">City of San Diego</p>
+        <div class="contest-district-panel">
+            {% get_contest 'Mayoral' 'city of san diego' as mayors %}
+            <ul>
+                <li class="contest">
+                    <p class="contest-name">City of San Diego Mayor</p>
+                    <div class="panel-contest">
+                        {% for mayor in mayors %}
+                            <p class="candidate">{{ mayor.first_name|lower|capfirst }} {{ mayor.last_name|lower|capfirst }}</p>
+                            <div class="panel-candidate">
+                                <p>Party: <em>{{ mayor.get_party_display }}</em>
+                                <br>Current position: <em>{{ mayor.current_position }}</em>
+                                <br><a href="{{ mayor.kpbs_profile }}" target="_blank">KPBS Profile</a>
+                                <br><a href="{{ mayor.URL }}" target="_blank">Website</a></p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% get_contest 'City_Council' 'city of san diego' as cans %}
+                <li class="contest">
+                    <p class="contest-name">City of San Diego - Council District 1</p>
+                    <div class="panel-contest">
+                        {% for cm in cans %}
+                            {% if cm.contest.name == 'City of San Diego - Council District 1' %}
+                                <p class="candidate">{{ cm }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ cm.current_position }}</em>
+                                    {% if cm.kpbs_profile %}<br><a href="{{ cm.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if cm.URL %}<br><a href="{{ cm.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                {% get_contest 'City_Council' 'city of san diego' as cans %}
+                <li class="contest">
+                    <p class="contest-name">City of San Diego - Council District 3</p>
+                    <div class="panel-contest">
+                        {% for cm in cans %}
+                            {% if cm.contest.name == 'City of San Diego - Council District 3' %}
+                                <p class="candidate">{{ cm }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ cm.current_position }}</em>
+                                    {% if cm.kpbs_profile %}<br><a href="{{ cm.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if cm.URL %}<br><a href="{{ cm.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                {% get_contest 'City_Council' 'city of san diego' as cans %}
+                <li class="contest">
+                    <p class="contest-name">City of San Diego - Council District 5</p>
+                    <div class="panel-contest">
+                        {% for cm in cans %}
+                            {% if cm.contest.name == 'City of San Diego - Council District 5' %}
+                                <p class="candidate">{{ cm }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ cm.current_position }}</em>
+                                    {% if cm.kpbs_profile %}<br><a href="{{ cm.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if cm.URL %}<br><a href="{{ cm.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                {% get_contest 'City_Council' 'city of san diego' as cans %}
+                <li class="contest">
+                    <p class="contest-name">City of San Diego - Council District 7</p>
+                    <div class="panel-contest">
+                        {% for cm in cans %}
+                            {% if cm.contest.name == 'City of San Diego - Council District 7' %}
+                                <p class="candidate">{{ cm }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ cm.current_position }}</em>
+                                    {% if cm.kpbs_profile %}<br><a href="{{ cm.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if cm.URL %}<br><a href="{{ cm.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                {% get_contest 'City_Council' 'city of san diego' as cans %}
+                <li class="contest">
+                    <p class="contest-name">City of San Diego - Council District 9</p>
+                    <div class="panel-contest">
+                        {% for cm in cans %}
+                            {% if cm.contest.name == 'City of San Diego - Council District 9' %}
+                                <p class="candidate">{{ cm }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ cm.current_position }}</em>
+                                    {% if cm.kpbs_profile %}<br><a href="{{ cm.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if cm.URL %}<br><a href="{{ cm.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                {% get_contest 'City_Attorney' 'city of san diego' as cans %}
+                <li class="contest">
+                    <p class="contest-name">City of San Diego - City Attorney</p>
+                    <div class="panel-contest">
+                        {% for cm in cans %}
+                            {% if cm.contest.name == 'City of San Diego - City Attorney' %}
+                                <p class="candidate">{{ cm }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ cm.current_position }}</em>
+                                    {% if cm.kpbs_profile %}<br><a href="{{ cm.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if cm.URL %}<br><a href="{{ cm.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <p class="contest-district">City of Chula Vista</p>
+        <div class="contest-district-panel">
+            {% get_contest 'City_Council' 'city of chula vista' as cans %}
+            <ul>
+                <li class="contest">
+                    <p class="contest-name">City of Chula Vista - City Council - Seat No. 3</p>
+                    <div class="panel-contest">
+                        {% for can in cans %}
+                            {% if can.contest.name == 'City of Chula Vista - City Council - Seat No. 3' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">City of Chula Vista - City Council - Seat No. 4</p>
+                    <div class="panel-contest">
+                        {% get_contest 'City_Council' 'city of chula vista' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'City of Chula Vista - City Council - Seat No. 4' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <p class="contest-district">County of San Diego</p>
+        <div class="contest-district-panel">
+            {% get_contest 'County_Supervisor' 'county of san diego' as cans %}
+            <ul>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Board of Supervisors - District No. 1</p>
+                    <div class="panel-contest">
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Board of Supervisors - District No. 1' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Board of Supervisors - District No. 2</p>
+                    <div class="panel-contest">
+                        {% get_contest 'County_Supervisor' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Board of Supervisors - District No. 2' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Board of Supervisors - District No. 3</p>
+                    <div class="panel-contest">
+                        {% get_contest 'County_Supervisor' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Board of Supervisors - District No. 3' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+  <p class="contest-type">Congressional Races</p>
+    <div class="contest-type-wrapper">
+        <div class="contest-district-panel">
+            <ul>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Congressional District 49</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Congressional' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Congressional District 49' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Congressional District 50</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Congressional' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Congressional District 50' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Congressional District 51</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Congressional' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Congressional District 51' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Congressional District 52</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Congressional' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Congressional District 52' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">County of San Diego - Congressional District 53</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Congressional' 'county of san diego' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'County of San Diego - Congressional District 53' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    Current position: <em>{{ can.current_position }}</em>
+                                    {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <p class="contest-type">State Senate Races</p>
+      <div class="contest-type-wrapper">
+          <div class="contest-district-panel">
+              <ul>
+                  <li class="contest">
+                      <p class="contest-name">County of San Diego - Senate District 39</p>
+                      <div class="panel-contest">
+                          {% get_contest 'U.S._Senate' 'county of san diego' as cans %}
+                          {% for can in cans %}
+                              {% if can.contest.name == 'County of San Diego - Senate District 39' %}
+                                  <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                  <div class="panel-candidate">
+                                      Current position: <em>{{ can.current_position }}</em>
+                                      {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                      {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                  </div>
+                              {% endif %}
+                          {% endfor %}
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      
+      <p class="contest-type">State Assembly Races</p>
+        <div class="contest-type-wrapper">
+            <div class="contest-district-panel">
+                <ul>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 71</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 71' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 75</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 75' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 76</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 76' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 77</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 77' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 78</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 78' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 79</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 79' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="contest">
+                        <p class="contest-name">County of San Diego - Assembly District 80</p>
+                        <div class="panel-contest">
+                            {% get_contest 'State_Assembly' 'county of san diego' as cans %}
+                            {% for can in cans %}
+                                {% if can.contest.name == 'County of San Diego - Assembly District 80' %}
+                                    <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                    <div class="panel-candidate">
+                                        Current position: <em>{{ can.current_position }}</em>
+                                        {% if can.kpbs_profile %}<br><a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                        {% if can.URL %}<br><a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>  
+  
+    <p class="contest-type">Presidential Race</p>
+    <div class="contest-type-wrapper">
+        <div class="contest-district-panel">
+            <ul>
+                <li class="contest">
+                    <p class="contest-name">President of the United States - AIP</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Presidential' 'federal' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'President of the United States - AIP' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    {% if can.kpbs_profile %}<a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">President of the United States - Democratic</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Presidential' 'federal' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'President of the United States - Democratic' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    {% if can.kpbs_profile %}<a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">President of the United States - Green</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Presidential' 'federal' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'President of the United States - Green' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    {% if can.kpbs_profile %}<a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">President of the United States - Libertarian</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Presidential' 'federal' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'President of the United States - Libertarian' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    {% if can.kpbs_profile %}<a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">President of the United States - Peace & Freedom</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Presidential' 'federal' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'President of the United States - Peace & Freedom' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    {% if can.kpbs_profile %}<a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="contest">
+                    <p class="contest-name">President of the United States - Republican</p>
+                    <div class="panel-contest">
+                        {% get_contest 'Presidential' 'federal' as cans %}
+                        {% for can in cans %}
+                            {% if can.contest.name == 'President of the United States - Republican' %}
+                                <p class="candidate">{{ can.first_name|lower|capfirst }} {{ can.last_name|lower|capfirst }}</p>
+                                <div class="panel-candidate">
+                                    {% if can.kpbs_profile %}<a href="{{ can.kpbs_profile" target="_blank">KPBS Profile</a>{% endif %}
+                                    {% if can.URL %}<a href="{{ can.URL }}" target="_blank">Website</a></p>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+

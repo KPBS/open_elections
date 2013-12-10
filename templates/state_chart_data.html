@@ -1,0 +1,37 @@
+{% load humanize %}
+{% with request.GET.w as width %}
+{% with request.GET.h as height %}
+<html>
+  <head>
+    <script type="text/javascript">
+        URI = '{{ request.META.REQUEST_URI }}';
+    </script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Candidate', 'Votes'],
+        {% for result in results %}
+          ['{% if result.candidate_name %}{{ result.candidate_name|safe }}{% else %}{{ result.referendum_option_identifier }}{% endif %}', {{ result.valid_votes }}]{% if not forloop.last %},{% endif %}
+        {% endfor %}
+        ]);
+
+        var options = {
+          title: '{{ request.GET.title }} - {{ pct_rpt }}% reporting',
+          chartArea:{left:10,top:50,width:"{% if not width %}400{% else %}{{ width }}{% endif %}px",height:"{% if not height %}400{% else %}{{ width }}{% endif %}px"},
+          pieSliceText: 'label'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: {% if not width %}400{% else %}{{ width }}{% endif %}px; height: {% if not width %}400{% else %}{{ height }}{% endif %}px;"></div>
+  </body>
+</html>
+{% endwith %}
+{% endwith %}

@@ -1,0 +1,302 @@
+{% load humanize kpbs_election_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>San Diego Mayoral General Election Campaign Contributions</title>
+
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.22/themes/base/jquery-ui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="http://kpbs.media.clients.ellingtoncms.com/static/kpbs/javascript/tipTipv13/tipTip.css" type="text/css" media="all" />
+  <style type="text/css">
+    #main-body {
+      width: 926px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    #map-frame {
+      border: 1px solid #ccc;
+      float: left;
+      padding: 0 15px 0 8px;
+      width: 613px;
+    }
+    .left {
+      background: #eee;
+      border: 1px solid #ababab;
+      padding-top: 10px;
+      float: left;
+    }
+    .candidate_nav {
+      list-style: none;
+      width: 400px;
+      margin: 0 auto;
+    }
+    li {
+      float: left;
+      margin-bottom: 12px;
+      margin-right: 10px;
+    }
+    .candidate_nav li a {
+      font-size: 14px;
+      margin:30px;
+      text-decoration: none;
+    }
+    .candidate_nav li a:hover {
+      text-decoration: underline;
+    }
+    #demaio_nav {
+      font-weight: bold;
+    }
+    #demaio-charts, #filner-charts {
+      float: right;
+      width:300px;
+    }
+    .bold, .active {
+      color: #000;
+      font-weight: bold;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    #filner {
+      display: none;
+    }
+    span.bar {
+      display:block;
+      top:0;
+      left:0;
+      height:15px;
+      background:#f6aa47;
+      z-index:-100;
+      margin-top:3px;
+      margin-bottom:-3px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      font-size:12px;
+      padding: 4px;
+    }
+    tr.table-header {
+      background-color: #ccc;
+    }
+    tr.table-header td {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      font-weight: bold;
+      vertical-align: bottom;
+    }
+    .ui-widget { 
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    a {
+      color: #015190;
+      text-decoration: none;
+    }
+    a:hover {text-decoration: underline; color: #CB0000;}    
+    #tiptip_content {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .ui-accordion .ui-accordion-header {
+      font-size:14px;
+      border-radius: 0;
+    }
+    .ui-accordion .ui-accordion-content-active {
+      border-radius:0;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://kpbs.media.clients.ellingtoncms.com/static/kpbs/javascript/tipTipv13/jquery.tipTip.minified.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      // Toggle the windows for each candidate
+      $(".demaio_nav").click(function(event) {
+        event.preventDefault();
+        $("#demaio").show();
+        $("#filner").hide();
+        $("#demaio_nav").css('font-weight', 'bold');
+        $("#filner_nav").css('font-weight', 'normal');
+       });
+
+      $(".filner_nav").click(function(event) {
+        event.preventDefault();
+        $("#demaio").hide();
+        $("#filner").show();
+        $("#filner_nav").css('font-weight', 'bold');
+        $("#demaio_nav").css('font-weight', 'normal');
+       });
+
+      // Open the maps in a full size window when clicked
+      $("#demaio_full").click(function(event) {
+        window.open('http://a.tiles.mapbox.com/v3/kpbs.demaio_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279');
+        event.preventDefault();
+       });
+      $("#filner_full").click(function(event) {
+        window.open('http://a.tiles.mapbox.com/v3/kpbs.filner_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279');
+        event.preventDefault();
+       });
+
+      $("#demaio-charts").accordion({autoHeight: false});
+      $("#filner-charts").accordion({autoHeight: false});
+
+      $(".tip_left").tipTip({defaultPosition: 'left'});
+    });
+  </script>
+</head>
+<body>
+  <div id="main-body">
+    <div id="demaio">
+      <div class="left">
+        <ul class="candidate_nav">
+          <li><a href="http://a.tiles.mapbox.com/v3/kpbs.demaio_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279" class="demaio_nav active">Carl DeMaio</a></li>
+          <li>|</li>
+          <li><a href="http://a.tiles.mapbox.com/v3/kpbs.filner_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279" class="filner_nav">Bob Filner</a></li>
+        </ul>
+        <iframe width='580' height='700' frameBorder='0' src='http://a.tiles.mapbox.com/v3/kpbs.demaio_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279'></iframe>
+      </div>
+      <div id="demaio-charts">
+        <!--<p>-->
+          <!--<a id="demaio_full" href="#" class="bold">View Map Full Screen</a>-->
+        <!--</p>-->
+        <h3><a href="#">Contributions by CA County</a></h3>
+        <div>
+          {% get_contributions "county" 2 as counties %}
+          <table class="grid">
+            <tr class="table-header">
+              <td style="width:100px;">County</td>
+              <td style="width:75px;">Amount</td>
+              <td style="width:75px;">No. Donations</td>
+            </tr>
+            {% for county in counties %}
+              <tr>
+                <td style="width:100px;">{{ county.county }}</td>
+                <td style="width:50px;">${{ county.amount|intcomma }}</td>
+                <td style="width:50px;">{{ county.count|intcomma }}</td>
+                <!--<td style="width:100px;"><span class="bar" title="{% widthratio county.amount 100 100 %}" style="width:{% widthratio county.amount 100 1 %}%"></span></td>-->
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+        <h3><a href="#">Contributions by State</a></h3>
+        <div>
+          {% get_contributions "state" 2 as states %}
+          <table class="grid">
+            <tr class="table-header">
+              <td style="width:100px;">State</td>
+              <td style="width:75px;">Amount</td>
+              <td style="width:75px;">No. Donations</td>
+            </tr>
+            {% for state in states %}
+              <tr>
+                <td style="width:100px;">{{ state.state }}</td>
+                <td style="width:50px;">${{ state.amount|intcomma }}</td>
+                <td style="width:50px;">{{ state.count|intcomma }}</td>
+                <!--<td style="width:100px;"><span class="bar" title="{% widthratio county.amount 100 100 %}" style="width:{% widthratio county.amount 100 1 %}%"></span></td>-->
+              </tr>
+            {% endfor %}
+          </table>
+        </div>      
+        <h3><a href="#">Top Contributions by Zip Code</a></h3>
+        <div>
+          {% get_contributions "zip" 2 as zips %}
+          <table class="grid">
+            <tr class="table-header">
+              <td style="width:100px;">Zip Code</td>
+              <td style="width:75px;">Amount</td>
+              <td style="width:75px;">No. Donations</td>
+            </tr>
+            {% for zip in zips %}
+              <tr {% if zip.zip_code == '92101' %} class="tip_left" title="$672,833 donated by Carl DeMaio"{% endif %} {% if zip.zip_code == '92119' %} class="tip_left" title="$130,000 donated by Republican Party of San Diego County"{% endif %}>
+                <td style="width:100px;">{{ zip.zip_code }}</td>
+                <td style="width:50px;">${{ zip.amount|intcomma }}</td>
+                <td style="width:50px;">{{ zip.count|intcomma }}</td>
+                <!--<td style="width:100px;"><span class="bar" title="{% widthratio county.amount 100 100 %}" style="width:{% widthratio county.amount 100 1 %}%"></span></td>-->
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>      
+    </div>
+    <div id="filner">
+      <div class="left">
+        <ul class="candidate_nav">
+          <li><a href="http://a.tiles.mapbox.com/v3/kpbs.demaio_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279" class="demaio_nav">Carl DeMaio</a></li>
+          <li>|</li>
+          <li><a href="http://a.tiles.mapbox.com/v3/kpbs.filner_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279" class="filner_nav active">Bob Filner</a></li>
+        </ul>
+        <iframe width='580' height='700' frameBorder='0' src='http://a.tiles.mapbox.com/v3/kpbs.filner_mayoral_race_campaign_contributions.html#6/37.2478/-119.8279'></iframe>
+      </div>
+      <div id="filner-charts">
+        <!--<p>-->
+          <!--<a id="filner_full" href="#" class="bold">View Map Full Screen</a>-->
+        <!--</p>-->
+        <h3><a href="#">Contributions by CA County</a></h3>
+        <div>
+          {% get_contributions "county" 3 as counties %}
+          <table class="grid">
+            <tr class="table-header">
+              <td style="width:100px;">County</td>
+              <td style="width:75px;">Amount</td>
+              <td style="width:75px;">No. Donations</td>
+            </tr>
+            {% for county in counties %}
+              <tr>
+                <td style="width:100px;">{{ county.county }}</td>
+                <td style="width:50px;">${{ county.amount|intcomma }}</td>
+                <td style="width:50px;">{{ county.count|intcomma }}</td>
+                <!--<td style="width:100px;"><span class="bar" title="{% widthratio county.amount 100 100 %}" style="width:{% widthratio county.amount 100 1 %}%"></span></td>-->
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+        <h3><a href="#">Contributions by State</a></h3>
+        <div>
+          {% get_contributions "state" 3 as states %}
+          <table class="grid">
+            <tr class="table-header">
+              <td style="width:100px;">State</td>
+              <td style="width:75px;">Amount</td>
+              <td style="width:75px;">No. Donations</td>
+            </tr>
+            {% for state in states %}
+              <tr>
+                <td style="width:100px;">{{ state.state }}</td>
+                <td style="width:50px;">${{ state.amount|intcomma }}</td>
+                <td style="width:50px;">{{ state.count|intcomma }}</td>
+                <!--<td style="width:100px;"><span class="bar" title="{% widthratio county.amount 100 100 %}" style="width:{% widthratio county.amount 100 1 %}%"></span></td>-->
+              </tr>
+            {% endfor %}
+          </table>
+        </div>      
+        <h3><a href="#">Top Contributions by Zip Code</a></h3>
+        <div>
+          {% get_contributions "zip" 3 as zips %}
+          <table class="grid">
+            <tr class="table-header">
+              <td style="width:100px;">Zip Code</td>
+              <td style="width:75px;">Amount</td>
+              <td style="width:75px;">No. Donations</td>
+            </tr>
+            {% for zip in zips %}
+              <tr {% if zip.zip_code == '92111' %} class="tip_left" title="$89,100 donated by San Diego County Democratic Party"{% endif %}>
+                <td style="width:100px;">{{ zip.zip_code }}</td>
+                <td style="width:50px;">${{ zip.amount|intcomma }}</td>
+                <td style="width:50px;">{{ zip.count|intcomma }}</td>
+                <!--<td style="width:100px;"><span class="bar" title="{% widthratio county.amount 100 100 %}" style="width:{% widthratio county.amount 100 1 %}%"></span></td>-->
+              </tr>
+            {% endfor %}
+          </table>
+        </div>      
+      </div>
+    </div>
+  </div>
+  <p>&nbsp;</p>
+</body>
+</html>

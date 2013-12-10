@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KPBS Election Results</title>
+  </head>
+  <body>
+    <!-- start county contests -->
+    {% if county_candidates %}
+      <table>
+        <thead>
+          <tr>
+            <td>Contest ID</td>
+            <td>Contest Name</td>
+            <td>Candidate Name</td>
+            <td>Percent of votes</td>
+            <td>Percent of precincts reporting</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for candidate in county_candidates %}
+            {# {% ifchanged candidate.contest or forloop.first %} #}
+              <tr>
+                <td>{{ candidate.contest.contest_id }}</td>
+                <td>{% if candidate.contest.chyron_name %}{{ candidate.contest.chyron_name }}{% else %}{{ candidate.contest.title }}{% endif %}</td>
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.pct|floatformat }}</td>
+                <td>{{ candidate.contest.pctrpt }}</td>
+              </tr>
+            {# {% endifchanged %} #}
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  {% comment %}
+    TODO: 11/12/13 Uncomment this block and add other contests after the special mayoral election
+    <!-- start state contests -->
+    {% for candidate in state_candidates %}
+      {% ifchanged candidate.state_contest %}
+        {% if not forloop.first %}
+          </contest>
+        {% endif %}
+        <contest id="{{ candidate.state_contest.contest_identifier }}" title="{% if candidate.state_contest.chyron_name %}{{ candidate.state_contest.chyron_name }}{% else %}{{ candidate.state_contest.contest_name }}{% endif %}" pctrpt="{% widthratio candidate.state_contest.precincts_reporting candidate.state_contest.total_precincts 100 %}" >
+      {% endifchanged %}
+        <candidate name="{% if candidate.candidate_name %}{{ candidate.candidate_name }}{% else %}{{ candidate.referendum_option_identifier }}{% endif %}" pct="{{ candidate.pct_votes_race|floatformat }}" />
+    {% endfor %}
+    </contest>
+    <!-- start presidental candidates -->
+    <contest id="1" title="President of the United States" pctrpt="{{ pres_candidates.0.contest.precincts_pct|floatformat:0 }}" >
+      {% for candidate in pres_candidates %}
+        <candidate name="{{ candidate.name }}" pct="{{ candidate.popular_pct|floatformat }}" electvote="{{ candidate.electoral_votes }}" />
+      {% endfor %}
+    </contest>
+  {% endcomment %}
+  </body>
+</html>

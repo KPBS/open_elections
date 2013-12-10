@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="election.xsl" ?>
+<ELECTION date="11-26-13" time="14:52:53"
+Major="1" Minor="94"
+   title="CITY OF SAN DIEGO" title2="Special Municipal Election" title3="Tuesday, November 19, 2013"
+   etype="UNOFFICIAL" ToBeCnt="" Absentee="">
+<SUMMARY reported="581" total="581" >
+
+<CONTEST key="5 " id="1" title="CITY OF SAN DIEGO                     MAYOR" numberof="12" votefor="1"
+   tcounted="242708" tblank="285" tover="0" tunder="0" reporting="581" numprec="581" pctrpt="100.0" >
+<CANDIDATE cankey="12" conkey="5 " canid = "9" name = "KEVIN FAULCONER" party = "" cantype = "0" votes="101944" pct="42.17" />
+<CANDIDATE cankey="8" conkey="5 " canid = "8" name = "DAVID ALVAREZ" party = "" cantype = "0" votes="65722" pct="27.19" />
+<CANDIDATE cankey="13" conkey="5 " canid = "5" name = "NATHAN FLETCHER" party = "" cantype = "0" votes="58346" pct="24.14" />
+<CANDIDATE cankey="7" conkey="5 " canid = "6" name = "MICHAEL J. AGUIRRE" party = "" cantype = "0" votes="10784" pct="4.46" />
+<CANDIDATE cankey="17" conkey="5 " canid = "10" name = "LINCOLN PICKARD" party = "" cantype = "0" votes="1143" pct="0.47" />
+<CANDIDATE cankey="10" conkey="5 " canid = "2" name = "BRUCE COONS" party = "" cantype = "0" votes="1012" pct="0.42" />
+<CANDIDATE cankey="15" conkey="5 " canid = "1" name = "S. 'SIMON' MOGHADAM" party = "" cantype = "0" votes="747" pct="0.31" />
+<CANDIDATE cankey="9" conkey="5 " canid = "3" name = "HUD COLLINS" party = "" cantype = "0" votes="647" pct="0.27" />
+<CANDIDATE cankey="14" conkey="5 " canid = "11" name = "MICHAEL A. KEMMER" party = "" cantype = "0" votes="612" pct="0.25" />
+<CANDIDATE cankey="11" conkey="5 " canid = "7" name = "HARRY DIRKS" party = "" cantype = "0" votes="434" pct="0.18" />
+<CANDIDATE cankey="16" conkey="5 " canid = "4" name = "TOBIAH L. PETTUS" party = "" cantype = "0" votes="343" pct="0.14" />
+</CONTEST>
+</SUMMARY>
+</ELECTION>
+

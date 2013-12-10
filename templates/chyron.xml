@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<election>
+<!-- start county contests -->
+{% for candidate in county_candidates %}
+  {% ifchanged candidate.contest %}
+    {% if not forloop.first %}
+      </contest>
+    {% endif %}
+    <contest id="{{ candidate.contest.contest_id }}" title="{% if candidate.contest.chyron_name %}{{ candidate.contest.chyron_name }}{% else %}{{ candidate.contest.title }}{% endif %}" pctrpt="{{ candidate.contest.pctrpt }}" >
+  {% endifchanged %}
+    <candidate name="{{ candidate.name }}" pct="{{ candidate.pct|floatformat }}" />
+{% endfor %}
+</contest>
+<!-- start state contests -->
+{% for candidate in state_candidates %}
+  {% ifchanged candidate.state_contest %}
+    {% if not forloop.first %}
+      </contest>
+    {% endif %}
+    <contest id="{{ candidate.state_contest.contest_identifier }}" title="{% if candidate.state_contest.chyron_name %}{{ candidate.state_contest.chyron_name }}{% else %}{{ candidate.state_contest.contest_name }}{% endif %}" pctrpt="{% widthratio candidate.state_contest.precincts_reporting candidate.state_contest.total_precincts 100 %}" >
+  {% endifchanged %}
+    <candidate name="{% if candidate.candidate_name %}{{ candidate.candidate_name }}{% else %}{{ candidate.referendum_option_identifier }}{% endif %}" pct="{{ candidate.pct_votes_race|floatformat }}" />
+{% endfor %}
+  </contest>
+  <!-- start presidental candidates -->
+  <contest id="1" title="President of the United States" pctrpt="{{ pres_candidates.0.contest.precincts_pct|floatformat:0 }}" >
+    {% for candidate in pres_candidates %}
+      <candidate name="{{ candidate.name }}" pct="{{ candidate.popular_pct|floatformat }}" electvote="{{ candidate.electoral_votes }}" />
+    {% endfor %}
+  </contest>
+</election>

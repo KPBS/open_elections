@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<Sumtable PrecinctsPct="100" office="President" Test="1" timestamp="2012-10-26T18:56:12Z"><Cand name="Romney" CandID="893" party="GOP" Winner="" PopVote="38958437" PopPct="41" StatesWon="17" ElectWon="235" StatesLead="0" ElectLead="0"/><Cand name="Obama" CandID="1918" party="Dem" Winner="" PopVote="38730173" PopPct="41" StatesWon="31" ElectWon="277" StatesLead="0" ElectLead="0"/><Cand name="Others" Winner="" PopVote="16886802" PopPct="18" StatesWon="3" ElectWon="23" StatesLead="0" ElectLead="0"/></Sumtable>
