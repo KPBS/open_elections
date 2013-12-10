@@ -1,0 +1,11 @@
+TO DO
+=======
+
+-Work on content_parser.parse_county_xml:
+      ++make the file generic to any election.
+
+
+GOTCHAS:
+emit_combined_csv_results:
+	stores its results in a "results" dir wherever it's run
+	MUST BE CHANGED TO USEFUL VALUE
