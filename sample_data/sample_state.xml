@@ -6,7 +6,7 @@ Note: This is a heavily edited XML file for testing with the open_elections prog
 (see: https://github.com/KPBS/open_elections)
 
 This file should contain a representative sample of what normally appears in an EML file
-from the California Secretary of State's office for state elections. 
+from the California Secretary of State's office for various state elections and propositions, etc. 
 
 However, please keep in mind that this file is normally 50,000 lines long or longer,
 so program accordingly.
