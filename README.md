@@ -167,6 +167,6 @@ Other Notes
 ===============
 
 
-You may also find it useful to install and use the python-elections application, which is designed for getting data from the AP elections feed. [Python-elections github repo](https://github.com/datadesk/python-elections). Lastly, the [application django-endless-pagination](https://github.com/frankban/django-endless-pagination), may also be useful for setting up your views/templates in order to feed the content. 
+You may also find it useful to install and use the python-elections application, which is designed for getting data from the AP elections feed. [See the Python-elections github repo](https://github.com/datadesk/python-elections). Lastly, the [application django-endless-pagination](https://github.com/frankban/django-endless-pagination), may also be useful for setting up your views/templates in order to feed the content. 
 
 Application deployed via Django to grab and parse election results available to news organizations.
