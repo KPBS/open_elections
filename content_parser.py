@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from StringIO import StringIO as sio
 from xml.etree import ElementTree as ET
@@ -29,6 +30,10 @@ def parse_state_xml(state_xml_files):
     # Primaries have two files, presidential and district:
     # urls = ('X12DP', 'X12PP')
     """Parse the state XML and insert it into the database"""
+
+    errmsg = "Not all file paths are available. Did you pass in a list?"
+    assert all(os.path.exists(path) for path in state_xml_files), errmsg
+
     affiliations = {'Democratic': 'DEM',
                     'Republican': 'REP',
                     'American Independent': 'AIP',
@@ -347,7 +352,6 @@ def parse_cal_access_data(file, candidate_id):  # TODO: get the candidate type b
 
 def emit_combined_csv_results():
     """Returns a CSV file to be parsed for use by KPBS.org"""
-    import os
     import csv
     
     results_dir = "results"
