@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Open Elections Python/Django Application Sample Data File
+
+Note: This is a heavily edited XML file for testing with the open_elections program.
+(see: https://github.com/KPBS/open_elections)
+
+This file should contain a representative sample of what normally appears in an EML file
+from the California Secretary of State's office for state elections. 
+
+However, please keep in mind that this file is normally 50,000 lines long or longer,
+so program accordingly.
+
+Happy coding!
+-->
+<EML Id="530" SchemaVersion="5.0">
+	<TransactionId>8839</TransactionId>
+	<MessageLanguage>en-US</MessageLanguage>
+	<IssueDate>2012-12-19T16:35:58-08:00</IssueDate>
+	<Count>
+		<EventIdentifier Id="California_2012_Statewide_Presidential_General_Election"/>
+		<Election>
+			<ElectionIdentifier Id="20121106"/>
+			<Contests>
+				<ContestIdentifier Id="001">
+					<ContestName>County Statistics</ContestName>
+				</ContestIdentifier>
+				<TotalVotes>
+					<CountMetric Id="RT" Type="Report Type">2</CountMetric>
+					<CountMetric Id="PR" Type="Precincts Reporting">24491</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">24491</CountMetric>
+					<CountMetric Id="PP" Type="Precincts Reporting Percentage">100.0</CountMetric>
+					<CountMetric Id="VT" Type="Voter Turnout">13202158</CountMetric>
+					<CountMetric Id="TV" Type="Total Registered Voters">18245970</CountMetric>
+					<CountMetric Id="VP" Type="Voter Turnout Percentage">72.4</CountMetric>
+					<CountMetric Id="FD" Type="First Report Date">20121106</CountMetric>
+					<CountMetric Id="FT" Type="First Report Time">8:00 PM</CountMetric>
+					<CountMetric Id="LD" Type="Last Report Date">20121218</CountMetric>
+					<CountMetric Id="LT" Type="Last Report Time">06:26 AM</CountMetric>
+				</TotalVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="14">Inyo</ReportingUnitIdentifier>
+					<CountMetric Id="RT" Type="Report Type">0</CountMetric>
+					<CountMetric Id="PR" Type="Precincts Reporting">24</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">24</CountMetric>
+					<CountMetric Id="PP" Type="Precincts Reporting Percentage">100.0</CountMetric>
+					<CountMetric Id="VT" Type="Voter Turnout">8146</CountMetric>
+					<CountMetric Id="TV" Type="Total Registered Voters">9956</CountMetric>
+					<CountMetric Id="VP" Type="Voter Turnout Percentage">81.8</CountMetric>
+					<CountMetric Id="FD" Type="First Report Date">20121106</CountMetric>
+					<CountMetric Id="FT" Type="First Report Time">8:20 PM</CountMetric>
+					<CountMetric Id="LD" Type="Last Report Date">20121204</CountMetric>
+					<CountMetric Id="LT" Type="Last Report Time">2:18 PM</CountMetric>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="27">Monterey</ReportingUnitIdentifier>
+					<CountMetric Id="RT" Type="Report Type">0</CountMetric>
+					<CountMetric Id="PR" Type="Precincts Reporting">189</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">189</CountMetric>
+					<CountMetric Id="PP" Type="Precincts Reporting Percentage">100.0</CountMetric>
+					<CountMetric Id="VT" Type="Voter Turnout">124902</CountMetric>
+					<CountMetric Id="TV" Type="Total Registered Voters">166290</CountMetric>
+					<CountMetric Id="VP" Type="Voter Turnout Percentage">75.1</CountMetric>
+					<CountMetric Id="FD" Type="First Report Date">20121106</CountMetric>
+					<CountMetric Id="FT" Type="First Report Time">9:58 PM</CountMetric>
+					<CountMetric Id="LD" Type="Last Report Date">20121205</CountMetric>
+					<CountMetric Id="LT" Type="Last Report Time">2:38 PM</CountMetric>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="40">San Luis Obispo</ReportingUnitIdentifier>
+					<CountMetric Id="RT" Type="Report Type">0</CountMetric>
+					<CountMetric Id="PR" Type="Precincts Reporting">147</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">147</CountMetric>
+					<CountMetric Id="PP" Type="Precincts Reporting Percentage">100.0</CountMetric>
+					<CountMetric Id="VT" Type="Voter Turnout">126818</CountMetric>
+					<CountMetric Id="TV" Type="Total Registered Voters">158603</CountMetric>
+					<CountMetric Id="VP" Type="Voter Turnout Percentage">80.0</CountMetric>
+					<CountMetric Id="FD" Type="First Report Date">20121106</CountMetric>
+					<CountMetric Id="FT" Type="First Report Time">8:32 PM</CountMetric>
+					<CountMetric Id="LD" Type="Last Report Date">20121207</CountMetric>
+					<CountMetric Id="LT" Type="Last Report Time">4:47 PM</CountMetric>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="44">Santa Cruz</ReportingUnitIdentifier>
+					<CountMetric Id="RT" Type="Report Type">0</CountMetric>
+					<CountMetric Id="PR" Type="Precincts Reporting">253</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">253</CountMetric>
+					<CountMetric Id="PP" Type="Precincts Reporting Percentage">100.0</CountMetric>
+					<CountMetric Id="VT" Type="Voter Turnout">121323</CountMetric>
+					<CountMetric Id="TV" Type="Total Registered Voters">158524</CountMetric>
+					<CountMetric Id="VP" Type="Voter Turnout Percentage">76.5</CountMetric>
+					<CountMetric Id="FD" Type="First Report Date">20121106</CountMetric>
+					<CountMetric Id="FT" Type="First Report Time">8:29 PM</CountMetric>
+					<CountMetric Id="LD" Type="Last Report Date">20121204</CountMetric>
+					<CountMetric Id="LT" Type="Last Report Time">5:18 PM</CountMetric>
+				</ReportingUnitVotes>
+			</Contests>
+		</Election>
+	</Count>
+</EML>

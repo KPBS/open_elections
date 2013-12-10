@@ -1,5 +1,22 @@
 <?xml version="1.0" ?>
 <?xml-stylesheet type="text/xsl" href="election.xsl" ?>
+<!-- 
+Open Elections Python/Django Application Sample Data File
+
+Note: This is a sample XML file for testing with the open_elections program.
+(see: https://github.com/KPBS/open_elections)
+
+This file is from a special municipal election in San Diego county and it may
+look nothing like the files that come out of your San Diego County Registrar's office.
+
+Take note of this and consider not using the following module especially if your county's
+xml looks nothing like what follows:
+
+open_elections.content_parser.parse_county_xml
+
+Happy coding!
+-->
+
 <ELECTION date="11-26-13" time="14:52:53"
 Major="1" Minor="94"
    title="CITY OF SAN DIEGO" title2="Special Municipal Election" title3="Tuesday, November 19, 2013"

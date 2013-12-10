@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Open Elections Python/Django Application Sample Data File
+
+Note: This is a heavily edited XML file for testing with the open_elections program.
+(see: https://github.com/KPBS/open_elections)
+
+This file should contain a representative sample of what normally appears in an EML file
+from the California Secretary of State's office for state elections. 
+
+However, please keep in mind that this file is normally 50,000 lines long or longer,
+so program accordingly.
+
+Happy coding!
+-->
+<EML Id="510" SchemaVersion="5.0">
+	<TransactionId>8839</TransactionId>
+	<MessageLanguage>en-US</MessageLanguage>
+	<IssueDate>2012-12-19T16:35:58-08:00</IssueDate>
+	<Count>
+		<EventIdentifier Id="California_2012_Statewide_Presidential_General_Election" />
+		<Election>
+			<ElectionIdentifier Id="20121106" />
+			<Contests>
+			<Contest>
+				<ContestIdentifier Id="010000000000" DisplayOrder="2">
+					<ContestName>President</ContestName>
+				</ContestIdentifier>
+
+				<TotalVotes>
+					<CountMetric Id="PR" Type="Precincts Reporting">24491</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">24491</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">2</CountMetric>
+
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="62" DisplayOrder="1">
+								<CandidateName>Barack Obama</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>7854285</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">60.2</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="23" DisplayOrder="2">
+								<CandidateName>Mitt Romney</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>4839958</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">37.1</CountMetric>
+					</Selection>
+
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="696" DisplayOrder="6">
+								<CandidateName>Roseanne Barr</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Peace and Freedom</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>53824</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">0.4</CountMetric>
+					</Selection>
+
+				</TotalVotes>
+
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="27">Monterey</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">189</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">189</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="62" DisplayOrder="1">
+								<CandidateName>Barack Obama</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>82920</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">67.1</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="23" DisplayOrder="2">
+								<CandidateName>Mitt Romney</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>37390</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">30.3</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="696" DisplayOrder="6">
+								<CandidateName>Roseanne Barr</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Peace and Freedom</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>524</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">0.4</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="44">Santa Cruz</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">253</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">253</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="62" DisplayOrder="1">
+								<CandidateName>Barack Obama</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>90805</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">75.6</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="23" DisplayOrder="2">
+								<CandidateName>Mitt Romney</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>24047</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">20.0</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="696" DisplayOrder="6">
+								<CandidateName>Roseanne Barr</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Peace and Freedom</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>675</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">0.6</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+
+			</Contest>
+			<Contest>
+				<ContestIdentifier Id="100000000001" DisplayOrder="2">
+					<ContestName>U.S. Senate</ContestName>
+				</ContestIdentifier>
+				<TotalVotes>
+					<CountMetric Id="PR" Type="Precincts Reporting">24491</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">24491</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">2</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="173" DisplayOrder="1">
+								<CandidateName>Dianne Feinstein</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>7864624</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">62.5</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="396" DisplayOrder="2">
+								<CandidateName>Elizabeth Emken</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>4713887</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">37.5</CountMetric>
+					</Selection>
+				</TotalVotes>
+
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="27">Monterey</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">189</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">189</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="173" DisplayOrder="1">
+								<CandidateName>Dianne Feinstein</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>84585</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">69.6</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="396" DisplayOrder="2">
+								<CandidateName>Elizabeth Emken</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>36930</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">30.4</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="44">Santa Cruz</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">253</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">253</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="173" DisplayOrder="1">
+								<CandidateName>Dianne Feinstein</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>91109</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">78.2</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="396" DisplayOrder="2">
+								<CandidateName>Elizabeth Emken</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>25463</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">21.8</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+			</Contest>
+			<Contest>
+				<ContestIdentifier Id="110000530000" DisplayOrder="2">
+					<ContestName>U.S. House of Representatives District 53</ContestName>
+				</ContestIdentifier>
+				<TotalVotes>
+					<CountMetric Id="PR" Type="Precincts Reporting">478</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">478</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">2</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="511" DisplayOrder="1">
+								<CandidateName>Susan A. Davis</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>164825</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">61.4</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="464" DisplayOrder="2">
+								<CandidateName>Nick Popaditch</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>103482</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">38.6</CountMetric>
+					</Selection>
+				</TotalVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="37">San Diego</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">478</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">478</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="511" DisplayOrder="1">
+								<CandidateName>Susan A. Davis</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Democratic</Type>
+							</Affiliation>
+						</Candidate>
+								<AffiliationIdentifier Id="Incumbent">
+									<RegisteredName />
+								</AffiliationIdentifier>
+						<ValidVotes>164825</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">61.4</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="464" DisplayOrder="2">
+								<CandidateName>Nick Popaditch</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>103482</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">100.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">38.6</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+			</Contest>
+			<Contest>
+				<ContestIdentifier Id="130000010000" DisplayOrder="2">
+					<ContestName>State Assembly District 1</ContestName>
+				</ContestIdentifier>
+				<TotalVotes>
+					<CountMetric Id="PR" Type="Precincts Reporting">577</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">577</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">2</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="543" DisplayOrder="1">
+								<CandidateName>Rick Bosetti</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>60920</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">34.4</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">34.4</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="421" DisplayOrder="2">
+								<CandidateName>Brian Dahle</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>116098</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">65.6</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">65.6</CountMetric>
+					</Selection>
+				</TotalVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="4">Butte</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">26</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">26</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="543" DisplayOrder="1">
+								<CandidateName>Rick Bosetti</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>2547</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">35.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">35.0</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="421" DisplayOrder="2">
+								<CandidateName>Brian Dahle</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>4738</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">65.0</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">65.0</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="18">Lassen</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">55</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">55</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="543" DisplayOrder="1">
+								<CandidateName>Rick Bosetti</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>2238</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">22.2</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">22.2</CountMetric>
+					</Selection>
+					<Selection>
+						<Candidate>
+							<CandidateIdentifier Id="421" DisplayOrder="2">
+								<CandidateName>Brian Dahle</CandidateName>
+							</CandidateIdentifier>
+							<Affiliation>
+								<AffiliationIdentifier Id="Party">
+									<RegisteredName />
+								</AffiliationIdentifier>
+								<Type>Republican</Type>
+							</Affiliation>
+						</Candidate>
+						<ValidVotes>7829</ValidVotes>
+						<CountMetric Id="PVP" Type="Percent Votes in Party">77.8</CountMetric>
+						<CountMetric Id="PVR" Type="Percent Votes in Race">77.8</CountMetric>
+					</Selection>
+				</ReportingUnitVotes>
+			</Contest>
+			<Contest>
+				<ContestIdentifier Id="190000000030" DisplayOrder="2">
+					<ContestName>Temporary Taxes to Fund Education</ContestName>
+				</ContestIdentifier>
+				<TotalVotes>
+					<CountMetric Id="PR" Type="Precincts Reporting">24491</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">24491</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">2</CountMetric>
+					<CountMetric Id="PYV" Type="Percent of Yes Votes">55.4</CountMetric>
+					<CountMetric Id="PNV" Type="Percent of No Votes">44.6</CountMetric>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="Yes" ProposalIdentifier="Temp Taxes for Educ." />
+						</Candidate>
+						<ValidVotes>7014114</ValidVotes>
+					</Selection>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="No" ProposalIdentifier="Temp Taxes for Educ." />
+						</Candidate>
+						<ValidVotes>5653637</ValidVotes>
+					</Selection>
+				</TotalVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="27">Monterey</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">189</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">189</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<CountMetric Id="PYV" Type="Percent of Yes Votes">65.9</CountMetric>
+					<CountMetric Id="PNV" Type="Percent of No Votes">34.1</CountMetric>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="Yes" ProposalIdentifier="Temp Taxes for Educ." />
+						</Candidate>
+						<ValidVotes>79559</ValidVotes>
+					</Selection>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="No" ProposalIdentifier="Temp Taxes for Educ." />
+						</Candidate>
+						<ValidVotes>41175</ValidVotes>
+					</Selection>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="44">Santa Cruz</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">253</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">253</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<CountMetric Id="PYV" Type="Percent of Yes Votes">73.8</CountMetric>
+					<CountMetric Id="PNV" Type="Percent of No Votes">26.2</CountMetric>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="Yes" ProposalIdentifier="Temp Taxes for Educ." />
+						</Candidate>
+						<ValidVotes>86781</ValidVotes>
+					</Selection>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="No" ProposalIdentifier="Temp Taxes for Educ." />
+						</Candidate>
+						<ValidVotes>30752</ValidVotes>
+					</Selection>
+				</ReportingUnitVotes>
+			</Contest>
+			<Contest>
+				<ContestIdentifier Id="190000000037" DisplayOrder="2">
+					<ContestName>Genetically Engineered Foods Labeling</ContestName>
+				</ContestIdentifier>
+				<TotalVotes>
+					<CountMetric Id="PR" Type="Precincts Reporting">24491</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">24491</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">2</CountMetric>
+					<CountMetric Id="PYV" Type="Percent of Yes Votes">48.6</CountMetric>
+					<CountMetric Id="PNV" Type="Percent of No Votes">51.4</CountMetric>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="Yes" ProposalIdentifier="Food Labeling" />
+						</Candidate>
+						<ValidVotes>6088714</ValidVotes>
+					</Selection>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="No" ProposalIdentifier="Food Labeling" />
+						</Candidate>
+						<ValidVotes>6442371</ValidVotes>
+					</Selection>
+				</TotalVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="27">Monterey</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">189</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">189</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<CountMetric Id="PYV" Type="Percent of Yes Votes">56.1</CountMetric>
+					<CountMetric Id="PNV" Type="Percent of No Votes">43.9</CountMetric>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="Yes" ProposalIdentifier="Food Labeling" />
+						</Candidate>
+						<ValidVotes>67334</ValidVotes>
+					</Selection>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="No" ProposalIdentifier="Food Labeling" />
+						</Candidate>
+						<ValidVotes>52662</ValidVotes>
+					</Selection>
+				</ReportingUnitVotes>
+				<ReportingUnitVotes>
+					<ReportingUnitIdentifier Id="44">Santa Cruz</ReportingUnitIdentifier>
+					<CountMetric Id="PR" Type="Precincts Reporting">253</CountMetric>
+					<CountMetric Id="TP" Type="Total Precincts">253</CountMetric>
+					<CountMetric Id="RT" Type="ReportType">0</CountMetric>
+					<CountMetric Id="PYV" Type="Percent of Yes Votes">67.0</CountMetric>
+					<CountMetric Id="PNV" Type="Percent of No Votes">33.0</CountMetric>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="Yes" ProposalIdentifier="Food Labeling" />
+						</Candidate>
+						<ValidVotes>78477</ValidVotes>
+					</Selection>
+					<Selection>
+						<Candidate>
+						<ProposalItem ReferendumOptionIdentifier="No" ProposalIdentifier="Food Labeling" />
+						</Candidate>
+						<ValidVotes>38636</ValidVotes>
+					</Selection>
+				</ReportingUnitVotes>
+			</Contest>
+			</Contests>
+		</Election>
+	</Count>
+</EML>
