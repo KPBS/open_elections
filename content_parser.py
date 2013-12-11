@@ -56,15 +56,20 @@ def parse_state_xml(state_xml_files):
         tree = ET.parse(xml_file)
         root = tree.getroot()
         if root is not None:
-            contests = root.find('Count').find('Election').find('Contests').getiterator('Contest')
+            contests = root.find('Count').find(
+                'Election').find(
+                    'Contests').getiterator('Contest')
+
             for contest in contests:
                 contest_params = {}
                 candidate_params = {}
                 # Get the CountMetric data
                 cm_list = contest.find('TotalVotes').findall('CountMetric')
-                count_metrics = {}
-                for cm in cm_list:
-                    count_metrics[cm.attrib['Id']] = cm.text
+                count_metrics = { cm.attrib['Id'] : cm.text 
+                                  for cm in cm_list }
+
+                # for cm in cm_list:
+                #     count_metrics[cm.attrib['Id']] = cm.text
                 #See if the contest already exists
                 try:
                     c = StateContest.objects.get(
