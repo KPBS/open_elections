@@ -12,19 +12,6 @@ from .models import ApContest, ApCandidate
 from .models import Contribution, Candidate
 
 
-## Models accessed below
-# StateContest
-# StateCandidate
-# CountyElection
-# CountyContest
-# CountyCandidate
-# ApContest
-# ApCandidate
-# Candidate
-# CountyZipCode
-# Contribution
-
-
 def parse_state_xml(state_xml_files):
     # TODO: Make this work for both primary and general elections.
     # Primaries have two files, presidential and district:
