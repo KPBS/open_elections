@@ -7,7 +7,7 @@ An application deployed via Python/Django to grab and parse California election 
 Details
 ===============
 
-This application was developed at KBPS Public Broadcasting in San Diego, California, by James Tinksy for feeding election results to [kpbs.org](http://www.kpbs/org) (see also: [kpbs.org election coverage](http://www.kpbs.org/news/election/)). It was originally developed as a Django module and all notes below are germane to setting it up inside a Django environment. Some familiarity with Python-Django will be helpful for setting this up and running it. For more information on Django, [see the official Django documentation](https://docs.djangoproject.com/en/dev/).
+This application was developed at KBPS Public Broadcasting in San Diego, California, by James Tinsky for feeding election results to [kpbs.org](http://www.kpbs/org) (see also: [kpbs.org election coverage](http://www.kpbs.org/news/election/)). It was originally developed as a Django module and all notes below are germane to setting it up inside a Django environment. Some familiarity with Python-Django will be helpful for setting this up and running it. For more information on Django, [see the official Django documentation](https://docs.djangoproject.com/en/dev/).
 
 Even though this application is available for use by anyone, in order to retrieve election results, you will need to get credentials set-up with one or all of the following orgnizations: 
 
